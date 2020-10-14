@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic.FileIO;
+﻿using Gini_LIB;
+using Microsoft.VisualBasic.FileIO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace Gini_Impurity
 {
     public partial class FormUtama : Form
     {
+        public List<Person> listOfPerson = new List<Person>();
         public FormUtama()
         {
             InitializeComponent();
@@ -46,7 +48,8 @@ namespace Gini_Impurity
                         while (!csvParser.EndOfData)
                         {
                             string[] fields = csvParser.ReadFields();
-                            //Isi sesuatu disini
+                            Person person = new Person(fields[0], fields[1], int.Parse(fields[2]), fields[3]);
+                            listOfPerson.Add(person);
                         }
                     }
                 }
@@ -61,5 +64,32 @@ namespace Gini_Impurity
             }
 
         }
-	}
+
+        private void buttonShow_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dataGridViewCSV.DataSource = null;
+                if(listOfPerson.Count > 0)
+                {
+                    dataGridViewCSV.DataSource = listOfPerson;
+                }
+                else
+                {
+                    dataGridViewCSV.DataSource = null;
+                }
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show("Tidak Bisa Menampilkan File. Pesan Error: " + error, "Error");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormGini form = new FormGini();
+            form.Owner = this;
+            form.ShowDialog();
+        }
+    }
 }
