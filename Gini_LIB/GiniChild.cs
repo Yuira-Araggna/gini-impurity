@@ -14,7 +14,7 @@ namespace Gini_LIB
             double giniChild = 0;
             foreach(GiniT gini in listOfGini)
             {
-                giniChild += ((gini.Total / (double)totalData) * gini.Gini);
+                giniChild += (double)gini.Total / totalData * gini.Gini;
             }
             return giniChild;
         }
