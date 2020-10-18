@@ -85,7 +85,7 @@ namespace Gini_Impurity
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonShowGini_Click(object sender, EventArgs e)
         {
             FormGini form = new FormGini();
             form.Owner = this;
