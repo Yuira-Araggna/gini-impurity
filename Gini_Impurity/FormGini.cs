@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,12 +16,12 @@ namespace Gini_Impurity
     public partial class FormGini : Form
     {
         List<Person> list = new List<Person>();
-        List<GiniT> listGiniF1 = new List<GiniT>();
-        List<GiniT> listGiniF2 = new List<GiniT>();
+        
         List<GiniT> listGiniF3 = new List<GiniT>();
         int c0 = 0;
         int c1 = 0;
-        int total = 0;
+
+        string result = "";
         public FormGini()
         {
             InitializeComponent();
@@ -29,53 +31,94 @@ namespace Gini_Impurity
         {
             FormUtama form = (FormUtama)this.Owner;
             list = form.listOfPerson;
-            Total();
+           
             
             
 
-            //GiniChild.CalcGiniChild(listGiniF1, total).ToString();
-            //
         }
 
-        private GiniT Feat1(string feat)
+        private void buttonCalculate_Click(object sender, EventArgs e)
         {
-            foreach (Person person in list)
+            GiniYN();
+
+            /*GiniT yesF1 = Feat1("YES");
+            listGiniF1.Add(yesF1);
+            GiniT noF1 = Feat1("NO");
+            listGiniF1.Add(noF1);
+
+            GiniT yesF2 = Feat2("YES");
+            listGiniF2.Add(yesF2);
+            GiniT noF2 = Feat2("NO");
+            listGiniF2.Add(noF2);
+
+            List<GiniT> listOfC0F3 = Feat3("<=");
+            List<GiniT> listOfC1F3 = Feat3(">");
+
+            GiniT giniC0 = listOfC0F3[0];
+            GiniT giniC1 = listOfC1F3[0];
+            listGiniF3.Add(giniC0);
+            listOfC1F3.Add(giniC1);
+
+            double giniBestSplit = GiniChild.CalcGiniChild(listGiniF3, total);
+
+
+            for (int i = 1; i < listOfC0F3.Count; i++)
             {
-                if (person.Feat1 == feat && person.Classif == "C0")
+                giniC0 = listOfC0F3[i];
+                giniC1 = listOfC1F3[i];
+                listGiniF3.Add(giniC0);
+                listOfC1F3.Add(giniC1);
+
+                double giniIndexI = GiniChild.CalcGiniChild(listGiniF3, total);
+
+                if (giniBestSplit > giniIndexI)
                 {
-                    c0++;
-                }
-                else if (person.Feat1 == feat && person.Classif == "C1")
-                {
-                    c1++;
+                    giniBestSplit = giniIndexI;
                 }
             }
 
-            GiniT gini = new GiniT(feat, c0, c1);
-            c0 = 0;
-            c1 = 0;
+            yesF1.CalcGini();
+            noF1.CalcGini();
 
-            return gini;
+            yesF2.CalcGini();
+            noF2.CalcGini();
+
+
+
+            textBoxOutput.Text = yesF1.Gini.ToString("F4");
+
+
+
+            textBox1.Text = GiniChild.CalcGiniChild(listGiniF2, total).ToString("F4");
+            textBoxFeat3.Text = giniBestSplit.ToString("F4");*/
         }
-        private GiniT Feat2(string feat)
+
+        private void GiniYN()
         {
-            foreach (Person person in list)
-            {
-                if (person.Feat2 == feat && person.Classif == "C0")
-                {
-                    c0++;
-                }
-                else if (person.Feat2 == feat && person.Classif == "C1")
-                {
-                    c1++;
-                }
-            }
+            GiniYesNo giniF1 = Sorter.Feat1Sort(list);
+            GiniYesNo giniF2 = Sorter.Feat2Sort(list);
+            GiniNumeric giniF3 = Sorter.Feat3Sort(list);
 
-            GiniT gini = new GiniT(feat, c0, c1);
-            c0 = 0;
-            c1 = 0;
-            return gini;
+            double giniYF1 = giniF1.CalcGiniY();
+            double giniNF1 = giniF1.CalcGiniN();
+
+            double giniYF2 = giniF2.CalcGiniY();
+            double giniNF2 = giniF2.CalcGiniN();
+
+            double giniChildF1 = giniF1.CalcGiniChild(giniYF1, giniNF1);
+            double giniChildF2 = giniF2.CalcGiniChild(giniYF2, giniNF2);
+            double giniChildF3 = giniF3.Gini;
+
+            result = $" Hasil perhitungan \n gini F1 {giniChildF1}\n gini F2 {giniChildF2} \n gini F3 {giniChildF3} \n Best Split adalah F1 {giniChildF1}"; ;
+
+            textBoxF1.Text = giniChildF1.ToString("F4");
+            textBoxF2.Text = giniChildF2.ToString("F4");
+            textBoxFeat3.Text = giniChildF3.ToString("F4");
         }
+
+       
+
+       
 
         private List<GiniT> Feat3(string node)
         {
@@ -135,64 +178,25 @@ namespace Gini_Impurity
             return listOfGini;
         }
 
-        private int Total()
+        private void button1_Click(object sender, EventArgs e)
         {
-            foreach(Person person in list)
+            SaveFileDialog save = new SaveFileDialog();
+            save.Title = "Gini List";
+            save.FileName = "Result.txt";
+            save.Filter = "Txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            save.CheckPathExists = true;
+            save.DefaultExt = ".txt";
+
+            if (save.ShowDialog() == DialogResult.OK)
             {
-                total++;
-            }
-            return total;
-        }
-
-        private void buttonCalculate_Click(object sender, EventArgs e)
-        {
-            GiniT yesF1 = Feat1("YES");
-            listGiniF1.Add(yesF1);
-            GiniT noF1 = Feat1("NO");
-            listGiniF1.Add(noF1);
-
-            GiniT yesF2 = Feat2("YES");
-            listGiniF2.Add(yesF2);
-            GiniT noF2 = Feat2("NO");
-            listGiniF2.Add(noF2);
-
-            List<GiniT> listOfC0F3 = Feat3("<=");
-            List<GiniT> listOfC1F3 = Feat3(">");
-
-            GiniT giniC0 = listOfC0F3[0];
-            GiniT giniC1 = listOfC1F3[0];
-            listGiniF3.Add(giniC0);
-            listOfC1F3.Add(giniC1);
-
-            double giniBestSplit = GiniChild.CalcGiniChild(listGiniF3, total);
-
-
-            for (int i = 1; i < listOfC0F3.Count; i++)
-            {
-                giniC0 = listOfC0F3[i];
-                giniC1 = listOfC1F3[i];
-                listGiniF3.Add(giniC0);
-                listOfC1F3.Add(giniC1);
-
-                double giniIndexI = GiniChild.CalcGiniChild(listGiniF3, total);
-
-                if (giniBestSplit > giniIndexI)
+                using (StreamWriter sw = new StreamWriter(save.FileName))
                 {
-                    giniBestSplit = giniIndexI;
+                    sw.Write(result);
+                    sw.Flush();
+                    sw.Close();
                 }
+
             }
-
-            yesF1.CalcGini();
-            noF1.CalcGini();
-
-            yesF2.CalcGini();
-            noF2.CalcGini();
-
-
-
-            textBoxOutput.Text = yesF1.Gini.ToString("F4");
-            textBox1.Text = GiniChild.CalcGiniChild(listGiniF2, total).ToString("F4");
-            textBoxFeat3.Text = giniBestSplit.ToString("F4");
         }
     }
 }
