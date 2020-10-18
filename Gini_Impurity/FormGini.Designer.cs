@@ -28,32 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxOutput = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxF1 = new System.Windows.Forms.TextBox();
+            this.textBoxF2 = new System.Windows.Forms.TextBox();
             this.textBoxFeat3 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonCalculate = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBoxOutput
+            // textBoxF1
             // 
-            this.textBoxOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxOutput.Location = new System.Drawing.Point(179, 12);
-            this.textBoxOutput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxOutput.Name = "textBoxOutput";
-            this.textBoxOutput.Size = new System.Drawing.Size(140, 46);
-            this.textBoxOutput.TabIndex = 8;
+            this.textBoxF1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxF1.Location = new System.Drawing.Point(179, 12);
+            this.textBoxF1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxF1.Name = "textBoxF1";
+            this.textBoxF1.Size = new System.Drawing.Size(140, 46);
+            this.textBoxF1.TabIndex = 8;
             // 
-            // textBox1
+            // textBoxF2
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(179, 93);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(140, 46);
-            this.textBox1.TabIndex = 9;
+            this.textBoxF2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxF2.Location = new System.Drawing.Point(179, 93);
+            this.textBoxF2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxF2.Name = "textBoxF2";
+            this.textBoxF2.Size = new System.Drawing.Size(140, 46);
+            this.textBoxF2.TabIndex = 9;
             // 
             // textBoxFeat3
             // 
@@ -105,18 +106,30 @@
             this.buttonCalculate.UseVisualStyleBackColor = true;
             this.buttonCalculate.Click += new System.EventHandler(this.buttonCalculate_Click);
             // 
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.Location = new System.Drawing.Point(349, 294);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(76, 27);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Calculate";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormGini
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonCalculate);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxFeat3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBoxOutput);
+            this.Controls.Add(this.textBoxF2);
+            this.Controls.Add(this.textBoxF1);
             this.Name = "FormGini";
             this.Text = "FormGini";
             this.Load += new System.EventHandler(this.FormGini_Load);
@@ -127,12 +140,13 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBoxOutput;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxF1;
+        private System.Windows.Forms.TextBox textBoxF2;
         private System.Windows.Forms.TextBox textBoxFeat3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonCalculate;
+        private System.Windows.Forms.Button button1;
     }
 }
