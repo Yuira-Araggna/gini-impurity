@@ -35,7 +35,7 @@ namespace Gini_LIB
             Total = yc0 + yc1 + nc0 + nc1;
             TotalY = yc0 + yc1;
             TotalN = nc0 + nc1;
-            Gini = 0;
+            Gini = CalcGiniChild(CalcGiniY(), CalcGiniN());
         }
 
         public double CalcGiniY()

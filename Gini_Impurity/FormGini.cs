@@ -94,6 +94,7 @@ namespace Gini_Impurity
         {
             GiniYesNo giniF1 = Sorter.Feat1Sort(list);
             GiniYesNo giniF2 = Sorter.Feat2Sort(list);
+            GiniNumeric giniF3 = Sorter.Feat3Sort(list);
 
             double giniYF1 = giniF1.CalcGiniY();
             double giniNF1 = giniF1.CalcGiniN();
@@ -104,8 +105,11 @@ namespace Gini_Impurity
             double giniChildF1 = giniF1.CalcGiniChild(giniYF1, giniNF1);
             double giniChildF2 = giniF2.CalcGiniChild(giniYF2, giniNF2);
 
+            double giniF3Child = giniF3.Gini;
+
             textBoxF1.Text = giniChildF1.ToString("F4");
             textBoxF2.Text = giniChildF2.ToString("F4");
+            textBoxFeat3.Text = giniF3Child.ToString("F4");
         }
 
        
