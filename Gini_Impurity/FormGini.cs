@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,7 +20,8 @@ namespace Gini_Impurity
         List<GiniT> listGiniF3 = new List<GiniT>();
         int c0 = 0;
         int c1 = 0;
-        
+
+        string result = "";
         public FormGini()
         {
             InitializeComponent();
@@ -104,12 +107,13 @@ namespace Gini_Impurity
 
             double giniChildF1 = giniF1.CalcGiniChild(giniYF1, giniNF1);
             double giniChildF2 = giniF2.CalcGiniChild(giniYF2, giniNF2);
+            double giniChildF3 = giniF3.Gini;
 
-            double giniF3Child = giniF3.Gini;
+            result = $" Hasil perhitungan \n gini F1 {giniChildF1}\n gini F2 {giniChildF2} \n gini F3 {giniChildF3} \n Best Split adalah F1 {giniChildF1}"; ;
 
             textBoxF1.Text = giniChildF1.ToString("F4");
             textBoxF2.Text = giniChildF2.ToString("F4");
-            textBoxFeat3.Text = giniF3Child.ToString("F4");
+            textBoxFeat3.Text = giniChildF3.ToString("F4");
         }
 
        
@@ -176,9 +180,23 @@ namespace Gini_Impurity
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int a = 5, b = 10;
+            SaveFileDialog save = new SaveFileDialog();
+            save.Title = "Gini List";
+            save.FileName = "Result.txt";
+            save.Filter = "Txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            save.CheckPathExists = true;
+            save.DefaultExt = ".txt";
 
-            MessageBox.Show($"{a.CompareTo(b)}");
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter sw = new StreamWriter(save.FileName))
+                {
+                    sw.Write(result);
+                    sw.Flush();
+                    sw.Close();
+                }
+
+            }
         }
     }
 }

@@ -1,0 +1,5 @@
+ Hasil perhitungan 
+ gini F1 0.344444444444444
+ gini F2 0.488888888888889 
+ gini F3 0.416666666666667 
+ Best Split adalah F1 0.344444444444444

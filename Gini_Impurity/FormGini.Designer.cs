@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonCalculate = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxF1
@@ -106,23 +106,23 @@
             this.buttonCalculate.UseVisualStyleBackColor = true;
             this.buttonCalculate.Click += new System.EventHandler(this.buttonCalculate_Click);
             // 
-            // button1
+            // buttonSave
             // 
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(349, 294);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(76, 27);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Calculate";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSave.AutoSize = true;
+            this.buttonSave.Location = new System.Drawing.Point(349, 294);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(76, 27);
+            this.buttonSave.TabIndex = 15;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormGini
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonCalculate);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -147,6 +147,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonCalculate;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSave;
     }
 }
