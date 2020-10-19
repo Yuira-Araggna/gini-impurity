@@ -43,8 +43,6 @@
   <ItemGroup>
     <Compile Include="GiniNumeric.cs" />
     <Compile Include="GiniYesNo.cs" />
-    <Compile Include="GiniChild.cs" />
-    <Compile Include="GiniT.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sorter.cs" />
