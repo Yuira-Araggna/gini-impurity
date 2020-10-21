@@ -1,0 +1,5 @@
+ Hasil perhitungan 
+ gini F1 0.3905
+ gini F2 0.4952 
+ gini F3 0.4308 
+ Best Split adalah  0.3905

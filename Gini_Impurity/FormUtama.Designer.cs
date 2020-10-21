@@ -30,9 +30,8 @@
         {
             this.dataGridViewCSV = new System.Windows.Forms.DataGridView();
             this.buttonShow = new System.Windows.Forms.Button();
-            this.textBoxOutput = new System.Windows.Forms.TextBox();
             this.buttonLoad = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonShowGini = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCSV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +48,8 @@
             // 
             // buttonShow
             // 
-            this.buttonShow.Location = new System.Drawing.Point(668, 14);
+            this.buttonShow.Enabled = false;
+            this.buttonShow.Location = new System.Drawing.Point(135, 11);
             this.buttonShow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonShow.Name = "buttonShow";
             this.buttonShow.Size = new System.Drawing.Size(115, 47);
@@ -58,18 +58,9 @@
             this.buttonShow.UseVisualStyleBackColor = true;
             this.buttonShow.Click += new System.EventHandler(this.buttonShow_Click);
             // 
-            // textBoxOutput
-            // 
-            this.textBoxOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxOutput.Location = new System.Drawing.Point(9, 14);
-            this.textBoxOutput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxOutput.Name = "textBoxOutput";
-            this.textBoxOutput.Size = new System.Drawing.Size(489, 46);
-            this.textBoxOutput.TabIndex = 7;
-            // 
             // buttonLoad
             // 
-            this.buttonLoad.Location = new System.Drawing.Point(545, 14);
+            this.buttonLoad.Location = new System.Drawing.Point(12, 11);
             this.buttonLoad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLoad.Name = "buttonLoad";
             this.buttonLoad.Size = new System.Drawing.Size(117, 47);
@@ -78,33 +69,31 @@
             this.buttonLoad.UseVisualStyleBackColor = true;
             this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
-            // button1
+            // buttonShowGini
             // 
-            this.button1.Location = new System.Drawing.Point(12, 466);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 47);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Show Gini";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonShowGini.Location = new System.Drawing.Point(12, 466);
+            this.buttonShowGini.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonShowGini.Name = "buttonShowGini";
+            this.buttonShowGini.Size = new System.Drawing.Size(117, 47);
+            this.buttonShowGini.TabIndex = 10;
+            this.buttonShowGini.Text = "Show Gini";
+            this.buttonShowGini.UseVisualStyleBackColor = true;
+            this.buttonShowGini.Click += new System.EventHandler(this.buttonShowGini_Click);
             // 
             // FormUtama
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 524);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonShowGini);
             this.Controls.Add(this.dataGridViewCSV);
             this.Controls.Add(this.buttonShow);
-            this.Controls.Add(this.textBoxOutput);
             this.Controls.Add(this.buttonLoad);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormUtama";
             this.Text = "Form Utama";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCSV)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -112,9 +101,8 @@
 
 		private System.Windows.Forms.DataGridView dataGridViewCSV;
 		private System.Windows.Forms.Button buttonShow;
-		private System.Windows.Forms.TextBox textBoxOutput;
 		private System.Windows.Forms.Button buttonLoad;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonShowGini;
     }
 }
 

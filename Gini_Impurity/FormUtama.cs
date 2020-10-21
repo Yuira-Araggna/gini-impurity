@@ -27,7 +27,6 @@ namespace Gini_Impurity
 		{
             open = new OpenFileDialog
             {
-                InitialDirectory = Directory.GetCurrentDirectory(),
                 Filter = "Comma Separated|*.csv"
             };
 
@@ -52,6 +51,7 @@ namespace Gini_Impurity
                             listOfPerson.Add(person);
                         }
                     }
+                    buttonShow.Enabled = true;
                 }
                 else
                 {
@@ -85,7 +85,7 @@ namespace Gini_Impurity
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonShowGini_Click(object sender, EventArgs e)
         {
             FormGini form = new FormGini();
             form.Owner = this;
